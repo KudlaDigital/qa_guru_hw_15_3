@@ -55,7 +55,6 @@ public class PracticeForm {
         $("#uploadPicture").uploadFile(new File("src/test/resources/1617343839_50-p-oboi-osennii-sad-59.jpeg"));
         //Set adress
         $("#currentAddress").setValue("st.Pushkina 6, bld. Kolotuskina 9, app 42");
-        $("#submit").scrollIntoView(true);
         //More adress
         //  Pls help me X_X i've tried all the stuffs
 
