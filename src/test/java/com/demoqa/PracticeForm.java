@@ -31,35 +31,31 @@ public class PracticeForm {
         executeJavaScript("$('footer').remove()");
         executeJavaScript("$('#fixedban').remove()");
         //Set name
-        $("#userName-wrapper #firstName").setValue("Denis");
+        $("#firstName").setValue("Denis");
         //Set surname
-        $("#userName-wrapper #lastName").setValue("Kudla");
+        $("#lastName").setValue("Kudla");
         //Set email
         $("#userEmail-wrapper #userEmail").setValue("denis@kudla.com");
         //Set gender
-        $("#gender-radio-1").click();
+        $("#genterWrapper").$(byText("Male")).click();
         //Set phone number
         $("#userNumber-wrapper #userNumber").setValue("7777777777");
         //Set birth date
         $("#dateOfBirthInput").click();
-        $(By.xpath("//*[@id=\"dateOfBirth\"]/div[2]/div[2]/div/div/div[2]/div[1]/div[2]/div[1]/select")).click();
-        $(byText("July")).click();
-        $(By.xpath("//*[@id=\"dateOfBirth\"]/div[2]/div[2]/div/div/div[2]/div[1]/div[2]/div[2]/select")).click();
-        $(byText("1994")).click();
+        $(".react-datepicker__month-select").selectOption("July");
+        $(".react-datepicker__year-select").selectOption("1994");
         $(By.xpath("//*[@id=\"dateOfBirth\"]/div[2]/div[2]/div/div/div[2]/div[2]/div[5]/div[6]")).click();
+        //Set objects
+        //X_X
         //Set hobbies
-        $("#hobbies-checkbox-1").click();
-        $("#hobbies-checkbox-2").click();
-        $("#hobbies-checkbox-3").click();
+        $("#hobbiesWrapper").$(byText("Sports")).click();
+        $("#hobbiesWrapper").$(byText("Reading")).click();
+        $("#hobbiesWrapper").$(byText("Music")).click();
         //Upload image
         $("#uploadPicture").uploadFile(new File("src/test/resources/1617343839_50-p-oboi-osennii-sad-59.jpeg"));
         //Set adress
         $("#currentAddress").setValue("st.Pushkina 6, bld. Kolotuskina 9, app 42");
-        $("#submit").scrollIntoView(true);
         //More adress
-        //  Pls help me X_X i've tried all the stuffs
-
-        Thread.sleep(1000);
 
         $("#submit").click();
 
@@ -67,25 +63,23 @@ public class PracticeForm {
         //Now lets check
 
         //Student Name
-        $(By.xpath("/html/body/div[4]/div/div/div[2]/div/table/tbody/tr[1]/td[2]")).shouldHave(text("Denis Kudla"));
+        $$(".table-responsive").findBy(text("Student Name")).shouldHave(text("Denis Kudla"));
         //Student Email
-        $(By.xpath("/html/body/div[4]/div/div/div[2]/div/table/tbody/tr[2]/td[2]")).shouldHave(text("denis@kudla.com"));
+        $$(".table-responsive").findBy(text("Student Email")).shouldHave(text("denis@kudla.com"));
         //Gender
-        $(By.xpath("/html/body/div[4]/div/div/div[2]/div/table/tbody/tr[3]/td[2]")).shouldHave(text("Male"));
+        $$(".table-responsive").findBy(text("Gender")).shouldHave(text("Male"));
         //Mobile
-        $(By.xpath("/html/body/div[4]/div/div/div[2]/div/table/tbody/tr[4]/td[2]")).shouldHave(text("7777777777"));
+        $$(".table-responsive").findBy(text("Mobile")).shouldHave(text("7777777777"));
         //Date of Birth
-        $(By.xpath("/html/body/div[4]/div/div/div[2]/div/table/tbody/tr[5]/td[2]")).shouldHave(text("29 July,1994"));
+        $$(".table-responsive").findBy(text("Date of Birth")).shouldHave(text("29 July,1994"));
         //Subjects
         //  I could't find the way to check this -_-
         //Hobbies
-        $(By.xpath("/html/body/div[4]/div/div/div[2]/div/table/tbody/tr[7]/td[2]")).shouldHave(text("29 July,1994"));
+        $$(".table-responsive").findBy(text("Hobbies")).shouldHave(text("Sports, Reading, Music"));
         //Picture
-        $(By.xpath("/html/body/div[4]/div/div/div[2]/div/table/tbody/tr[8]/td[2]")).shouldHave(text("1617343839_50-p-oboi-osennii-sad-59.jpeg"));
+        $$(".table-responsive").findBy(text("Picture")).shouldHave(text("1617343839_50-p-oboi-osennii-sad-59.jpeg"));
         //Address
-        $(By.xpath("/html/body/div[4]/div/div/div[2]/div/table/tbody/tr[9]/td[2]")).shouldHave(text("st.Pushkina 6, bld. Kolotuskina 9, app 42"));
-
-        Thread.sleep(1000);
+        $$(".table-responsive").findBy(text("Address")).shouldHave(text("st.Pushkina 6, bld. Kolotuskina 9, app 42"));
 
         //Close tab
         $("#closeLargeModal").click();
